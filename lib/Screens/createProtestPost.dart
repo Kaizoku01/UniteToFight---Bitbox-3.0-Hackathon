@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:unitetofight/Screens/mediaPicker.dart';
 import 'package:unitetofight/globalConstants.dart' as global;
 import 'package:unitetofight/internetConnectivity/internetConnectivity.dart' as conn;
@@ -15,7 +17,7 @@ class _CreateProtestPostState extends State<CreateProtestPost> {
   final _titleController = TextEditingController();
 
   final _descriptionController = TextEditingController();
-
+  final _startStamp = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -31,14 +33,14 @@ class _CreateProtestPostState extends State<CreateProtestPost> {
                   Semantics(
                     label: 'Full name text field',
                     child: ZealFormField(
-                      headerTitle: 'Full Name',
+                      headerTitle: 'Title',
                       content: TextFormField(
                         controller: _titleController,
                         style: TextStyle(fontSize: 16),
                         cursorColor: Colors.black,
                         cursorHeight: 20,
                         decoration: InputDecoration(
-                          hintText: '\tFull Name',
+                          hintText: '\tTitle',
                           hintStyle: TextStyle(
                               fontWeight: FontWeight.w400,
                               color: Colors.black.withOpacity(0.35)),
@@ -97,6 +99,64 @@ class _CreateProtestPostState extends State<CreateProtestPost> {
                           ),
                           filled: true,
                         ),
+                      ),
+                    ),
+                  ),
+                  ZealFormField(
+                    headerTitle: 'Protest date',
+                    content: SizedBox(
+                      height: global.deviceHeight / 12,
+                      width: global.deviceWidth,
+                      child: TextFormField(
+                        readOnly: true,
+                        controller: _startStamp,
+                        style: TextStyle(fontSize: 16),
+                        cursorColor: Colors.black,
+                        cursorHeight: 20,
+                        decoration: InputDecoration(
+                          hintText: '\there..',
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black.withOpacity(0.35)),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            borderSide: const BorderSide(
+                              color: Color(0xfffafafa),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            borderSide: const BorderSide(
+                              color: Color(0xfffafafa),
+                            ),
+                          ),
+                          filled: true,
+                          prefixIcon: IconButton(
+                              icon: Icon(FontAwesomeIcons.calendar),
+                              color: Colors.black,
+                              onPressed: () async {
+                                DateTime? picked = await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(2000),
+                                    lastDate: DateTime(2100),
+                                    initialEntryMode:
+                                    DatePickerEntryMode.calendarOnly);
+                                if (picked != null) {
+                                  setState(() {
+                                    _startStamp.text =
+                                        DateFormat.yMMMd().format(picked);
+                                  });
+                                }
+                              }),
+                        ),
+                        validator: (val) {
+                          if (val!.isEmpty) {
+                            return "Name format Invalid";
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                     ),
                   ),

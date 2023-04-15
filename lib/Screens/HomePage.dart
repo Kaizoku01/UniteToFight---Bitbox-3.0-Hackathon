@@ -67,8 +67,15 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class ProtestCard extends StatelessWidget {
-  const ProtestCard({Key? key}) : super(key: key);
+class ProtestCard extends StatefulWidget {
+  ProtestCard({Key? key}) : super(key: key);
+
+  @override
+  State<ProtestCard> createState() => _ProtestCardState();
+}
+
+class _ProtestCardState extends State<ProtestCard> {
+  bool _isLiked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -111,8 +118,12 @@ class ProtestCard extends StatelessWidget {
                 ),
                 Spacer(),
                 IconButton(
-                  onPressed: () {},
-                  icon: Icon(FontAwesomeIcons.heart),
+                  onPressed: () {
+                    setState(() {
+                      _isLiked = !_isLiked;
+                    });
+                  },
+                  icon: _isLiked? Icon(FontAwesomeIcons.solidHeart,color: Colors.redAccent,) : Icon(FontAwesomeIcons.heart) ,
                 ),
                 IconButton(
                   onPressed: () {},
@@ -233,14 +244,20 @@ class _ProtestCardExtendState extends State<ProtestCardExtend> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Text(
-                      '950' + ' Supporters',
-                      style: TextStyle(
-                        fontFamily: 'Jost',
-                        fontStyle: FontStyle.italic,
-                        color: Colors.red,
-                        fontSize: 17,
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '950' + ' Supporters',
+                          style: TextStyle(
+                            fontFamily: 'Jost',
+                            fontStyle: FontStyle.italic,
+                            color: Colors.red,
+                            fontSize: 17,
+                          ),
+                        ),
+                        IconButton(icon: Icon(Icons.share), onPressed: (){},),
+                      ],
                     ),
                   ),
                 ],

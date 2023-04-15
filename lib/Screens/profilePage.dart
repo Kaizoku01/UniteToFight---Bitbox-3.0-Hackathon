@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:unitetofight/globalConstants.dart' as global;
 
+import 'HomePage.dart';
+
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
 
@@ -33,6 +35,7 @@ class _ProfilePageState extends State<ProfilePage> with TickerProviderStateMixin
               backgroundImage: AssetImage('assets/images/profile.jpg'),
               radius: 60,
             ),
+            Text('Sarvagya Saxena',style: TextStyle(fontSize: 20),),
             TabBar(
               controller: _tabController,
               //isScrollable: true,
@@ -51,8 +54,16 @@ class _ProfilePageState extends State<ProfilePage> with TickerProviderStateMixin
               child: TabBarView(
                 controller: _tabController,
                   children: [
-                Container(color: Colors.blue),
-                Container(color: Colors.red),
+                Column(
+                  children: [
+                    ProtestCard(),
+                  ],
+                ),
+                    Column(
+                      children: [
+                        ProtestCard(),
+                      ],
+                    )
               ]),
             ),
             // ListView.builder(itemBuilder: (BuildContext context, int index){
@@ -64,5 +75,14 @@ class _ProfilePageState extends State<ProfilePage> with TickerProviderStateMixin
         ),
       ),
     );
+  }
+}
+
+class CommentBox extends StatelessWidget {
+  const CommentBox({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
