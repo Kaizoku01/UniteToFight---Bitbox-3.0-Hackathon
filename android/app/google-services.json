@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "433461684181",
+    "project_id": "unitetofight-f7c0a",
+    "storage_bucket": "unitetofight-f7c0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433461684181:android:f45be0a4c6f9bb37d23f5c",
+        "android_client_info": {
+          "package_name": "com.example.unitetofight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433461684181-2tk2ei0ramtimvtt6mgn570gj1d62gdq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuhswIu8dpuhtkathvpTzaJehhvO64JSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433461684181-2tk2ei0ramtimvtt6mgn570gj1d62gdq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

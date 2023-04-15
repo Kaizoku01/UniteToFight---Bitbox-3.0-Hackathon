@@ -4,6 +4,7 @@ import 'package:unitetofight/Screens/HomePage.dart';
 import 'package:unitetofight/Screens/createProtestPost.dart';
 import 'package:unitetofight/Screens/profilePage.dart';
 import 'package:unitetofight/globalConstants.dart' as global;
+
 class InitialRoutingClass extends StatefulWidget {
   const InitialRoutingClass({Key? key}) : super(key: key);
 
@@ -17,7 +18,7 @@ class _InitialRoutingClassState extends State<InitialRoutingClass> {
 
   static List<Widget> _screens = <Widget>[
     HomePage(),
-    CreateProtestPost(),
+    //CreateProtestPost(),
     ProfilePage(),
   ];
   void _onItemTapped(int index) {
@@ -39,7 +40,7 @@ class _InitialRoutingClassState extends State<InitialRoutingClass> {
         backgroundColor: Color(0xff017E91),
         items: [
           TabItem(icon: Icons.home, title: 'Home'),
-          TabItem(icon: Icons.add, title: 'Add'),
+          //TabItem(icon: Icons.add, title: 'Add'),
           TabItem(icon: Icons.person_2_rounded, title: 'Profile'),
         ],
         initialActiveIndex: _selectedIndex,
